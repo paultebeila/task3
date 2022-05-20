@@ -13,6 +13,11 @@ if(localStorage.getItem("users") === null) {
     app.users = users;
 }
 
+if(localStorage.getItem("username") === null) {
+    //store user identification
+    localStorage.setItem("username", "");
+}
+
 //function to register
 function registerUser() {
     let fullnames = document.querySelector("#names").value;
@@ -31,8 +36,10 @@ function loginUser() {
     let username = document.querySelector("#username").value;
     let password = document.querySelector("#password").value;
 
-    if(app.loginUser(username, password)){
-        location.href="../Home_Page.html"
+    if(app.loginUser(username, password)) {
+        let uidL = username;
+        localStorage.setItem("username", uidL);
+        location.href = "../Home_Page.html";
     }
     
 }
